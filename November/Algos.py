@@ -9,8 +9,6 @@
 
 
 def reverse(x):
-   if x < (-2**31) or x > (2**31)-1:
-         return 0
    sx = str(x)
    if len(sx) == 1:
       sx = int(sx)
@@ -20,17 +18,14 @@ def reverse(x):
       new = new + sx[0]
       for i in range(len(sx)-1,0,-1):
          new +=  sx[i]
-      new = int(new)
-      if new < (-2**31) or new > (2**31)-1:
-         return 0
-      return new
    else :
-      for i in range(len(sx)-1,-1,-1):
-         new +=  sx[i]
-      new = int(new)
-      if new < (-2**31) or new > (2**31)-1:
-         return 0
-      return new 
-print(reverse(1534236469))
+      new = "".join(reversed(sx))
+   new = int(new)
+   if new < (-2**31) or new > (2**31)-1:
+      return 0
+   return new 
+print(reverse(308))
+
+
 
 
