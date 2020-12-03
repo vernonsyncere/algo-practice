@@ -23,7 +23,7 @@
 # def threeSum(array, targetSum):
 #    array.sort()
 #    newArr = []
-#    for i in range(len(array) -1 ):
+#    for i in range(len(array) -2 ):
 #       left = i + 1
 #       right = len(array) -1
 #       while left < right:
