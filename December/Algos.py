@@ -1,3 +1,4 @@
+import math
 # def isValidSubsequence (sequence, array):
 #    # seqIdx = 0
 #    # for value in array:
@@ -118,28 +119,35 @@
 
 # print(isMontotonic([1,2,3,4,5,7,8,8,8,8,9,3]))
 
-def spiralTraverse(array):
-   ending = []
-   startRow, endRow = 0, len(array) - 1
-   startColumn, endColumn = 0, len(array[0]) - 1
+# def spiralTraverse(array):
+#    ending = []
+#    startRow, endRow = 0, len(array) - 1
+#    startColumn, endColumn = 0, len(array[0]) - 1
 
-   while startRow <= endRow and startColumn <= endColumn:
-      for col in range(startColumn, endColumn + 1):
-         ending.append(array[startRow][col])
+#    while startRow <= endRow and startColumn <= endColumn:
+#       for col in range(startColumn, endColumn + 1):
+#          ending.append(array[startRow][col])
 
-      for row in range(startRow + 1, endRow + 1):
-         ending.append(array[row][endColumn])
+#       for row in range(startRow + 1, endRow + 1):
+#          ending.append(array[row][endColumn])
 
-      for col in reversed(range(startColumn,endColumn)):
-         ending.append(array[endRow][col])
+#       for col in reversed(range(startColumn,endColumn)):
+#          ending.append(array[endRow][col])
       
-      for row in reversed(range(startRow + 1, endRow)):
-         ending.append(array[row][startColumn])
+#       for row in reversed(range(startRow + 1, endRow)):
+#          ending.append(array[row][startColumn])
       
-      startRow +=1
-      endRow -=1
-      startColumn +=1
-      endColumn -= 1
+#       startRow +=1
+#       endRow -=1
+#       startColumn +=1
+#       endColumn -= 1
 
-   return ending
-print(spiralTraverse([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
+#    return ending
+# print(spiralTraverse([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
+
+
+one = [9,9,9]
+two = [1,2,3,4]
+three = [12,3,6,4,5,8,9]
+print(max(len(one), len(two), len(three)))
+
