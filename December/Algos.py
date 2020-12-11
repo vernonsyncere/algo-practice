@@ -146,8 +146,36 @@ import math
 # print(spiralTraverse([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
 
 
-one = [9,9,9]
-two = [1,2,3,4]
-three = [12,3,6,4,5,8,9]
-print(max(len(one), len(two), len(three)))
+# one = [9,9,9]
+# two = [1,2,3,4]
+# three = [12,3,6,4,5,8,9]
+# print(max(len(one), len(two), len(three)))
+def productTime(array):
+   dic = {}
+   empty = []
+   for i in range(len(array)):
+      counter = 1
+      if i == len(array) - 1:
+         for key in dic:
+            counter *= dic[key]
+         empty.append(counter)
+         return empty
 
+      elif i > 0 and i != len(array) - 1:
+         for key in dic:
+            counter *= dic[key]
+            
+      pointer = i + 1
+      while pointer < len(array):
+         counter *= array[pointer]
+      empty.append(counter)
+      dic[i] = array[i]
+   return empty
+
+print(productTime([1,2,3,4,5]))
+# dic = {"0":1,"1":2,"2":3,}
+# counter = 1
+# for key in dic:
+#    print(dic[key])
+#    counter *= dic[key]
+#    print(counter)
