@@ -118,64 +118,72 @@ import math
 #    return goesUp or goesDown
 
 # print(isMontotonic([1,2,3,4,5,7,8,8,8,8,9,3]))
-
-# def spiralTraverse(array):
-#    ending = []
-#    startRow, endRow = 0, len(array) - 1
-#    startColumn, endColumn = 0, len(array[0]) - 1
-
-#    while startRow <= endRow and startColumn <= endColumn:
-#       for col in range(startColumn, endColumn + 1):
-#          ending.append(array[startRow][col])
-
-#       for row in range(startRow + 1, endRow + 1):
-#          ending.append(array[row][endColumn])
-
-#       for col in reversed(range(startColumn,endColumn)):
-#          ending.append(array[endRow][col])
-      
-#       for row in reversed(range(startRow + 1, endRow)):
-#          ending.append(array[row][startColumn])
-      
-#       startRow +=1
-#       endRow -=1
-#       startColumn +=1
-#       endColumn -= 1
-
-#    return ending
-# print(spiralTraverse([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
+# BRUTE FORCE
+# def getProduct(array):
+   
+#    # # places a 1 at every element in the product array and matches the length of 
+#    # # the product array to the array passed in
+#    # product = [1 for _ in range(len(array))]
+#    # for i in range (len(array)):
+#    #    runningProduct = 1
+#    #    for j in range(len(array)):
+#    #       if i != j:
+#    #          runningProduct *= array[j]
+#    #    product[i] = runningProduct
+#    # return product
 
 
-# one = [9,9,9]
-# two = [1,2,3,4]
-# three = [12,3,6,4,5,8,9]
-# print(max(len(one), len(two), len(three)))
-def productTime(array):
-   dic = {}
-   empty = []
+
+# print(getProduct([5,1,4,2]))
+
+# O(n) time | O(n) space
+# def getProduct(array):
+   
+#    #  places a 1 at every element in the product array and matches the length of 
+#    #  the product array to the array passed in
+#    product = [1 for _ in range(len(array))]
+#    leftProducts = [1 for _ in range(len(array))]
+#    rightProducts =[1 for _ in range(len(array))]
+
+#    leftRunningProduct = 1
+#    for i in range(len(array)):
+#       leftProducts[i] = leftRunningProduct
+#       leftRunningProduct *= array[i]
+   
+#    rightRunningProduct = 1
+#    for j in reversed(range(len(array))):
+#       rightProducts[j] = rightRunningProduct
+#       rightRunningProduct *= array[j]
+
+#    for i in range(len(array)):
+#       product[i] = leftProducts[i] * rightProducts[i]
+#    return product
+
+
+
+# print(getProduct([5,1,4,2]))
+
+def getProduct(array):
+   
+   #  places a 1 at every element in the product array and matches the length of 
+   #  the product array to the array passed in
+   product = [1 for _ in range(len(array))]
+
+
+   leftRunningProduct = 1
    for i in range(len(array)):
-      counter = 1
-      if i == len(array) - 1:
-         for key in dic:
-            counter *= dic[key]
-         empty.append(counter)
-         return empty
+      product[i] = leftRunningProduct
+      leftRunningProduct *= array[i]
+   
+   rightRunningProduct = 1
+   for j in reversed(range(len(array))):
+      product[j] *= rightRunningProduct
+      rightRunningProduct *= array[j]
 
-      elif i > 0 and i != len(array) - 1:
-         for key in dic:
-            counter *= dic[key]
-            
-      pointer = i + 1
-      while pointer < len(array):
-         counter *= array[pointer]
-      empty.append(counter)
-      dic[i] = array[i]
-   return empty
+   return product
 
-print(productTime([1,2,3,4,5]))
-# dic = {"0":1,"1":2,"2":3,}
-# counter = 1
-# for key in dic:
-#    print(dic[key])
-#    counter *= dic[key]
-#    print(counter)
+
+
+
+
+print(getProduct([5,1,4,2]))
