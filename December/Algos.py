@@ -163,27 +163,58 @@ import math
 
 # print(getProduct([5,1,4,2]))
 
-def getProduct(array):
+# def getProduct(array):
    
-   #  places a 1 at every element in the product array and matches the length of 
-   #  the product array to the array passed in
-   product = [1 for _ in range(len(array))]
+#    #  places a 1 at every element in the product array and matches the length of 
+#    #  the product array to the array passed in
+#    product = [1 for _ in range(len(array))]
 
 
-   leftRunningProduct = 1
-   for i in range(len(array)):
-      product[i] = leftRunningProduct
-      leftRunningProduct *= array[i]
+#    leftRunningProduct = 1
+#    for i in range(len(array)):
+#       product[i] = leftRunningProduct
+#       leftRunningProduct *= array[i]
    
-   rightRunningProduct = 1
-   for j in reversed(range(len(array))):
-      product[j] *= rightRunningProduct
-      rightRunningProduct *= array[j]
+#    rightRunningProduct = 1
+#    for j in reversed(range(len(array))):
+#       product[j] *= rightRunningProduct
+#       rightRunningProduct *= array[j]
 
-   return product
-
-
+#    return product
 
 
 
-print(getProduct([5,1,4,2]))
+
+
+# print(getProduct([5,1,4,2]))
+
+def spiralTraverse(array):
+   spiral = []
+   sRow, eRow = 0, len(array) - 1
+   sCol, eCol = 0, len(array[0]) -1
+
+   while sRow <= eRow and sCol <= eCol:
+      for col in range(sCol, eCol + 1):
+         spiral.append(array[sRow][col])
+
+      for row in range(sRow + 1, eRow + 1):
+         spiral.append(array[row][eCol])
+
+      for col in reversed(range(sCol,eCol )):
+         if sRow == eRow:
+            break
+         spiral.append(array[eRow][col])
+
+      for row in reversed(range(sRow + 1 , eRow)):
+         if sCol == eCol:
+                break
+         spiral.append(array[row][sCol])
+
+      sRow += 1
+      eRow -= 1
+      sCol += 1
+      eCol -= 1
+
+   return spiral
+
+print(spiralTraverse([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
