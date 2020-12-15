@@ -31,13 +31,44 @@
 # we'll know if the sequence array is a subset of the main array if the length of hte sequence index is == tp the length 
 # of the sequence array
 
-def subSequence(array, sequence):
-   main = 0
-   sub = 0
+# def subSequence(array, sequence):
+#    main = 0
+#    sub = 0
 
-   while main < len(array) and sub < len(sequence):
-      if array[main] == sequence[sub]:
-         sub += 1
-      main +=1
-   return sub == len(sequence)
-print(subSequence([1,2,5,6,7,8,12,54,63,25],[5,8,25,63]))
+#    while main < len(array) and sub < len(sequence):
+#       if array[main] == sequence[sub]:
+#          sub += 1
+#       main +=1
+#    return sub == len(sequence)
+# print(subSequence([1,2,5,6,7,8,12,54,63,25],[5,8,25,63]))
+
+# get the sum of three numbers that == the target 
+# if they == the target put them in an array inside an array
+# start by sorting the array
+# create empty array
+# for Loop you want the current index and two pointers, 
+# one starting at the element directly to the right and one on the last element
+# run a while Loop
+# if they == the targetSum add all three into an array and append it into the empty arrayOne
+# if sum is less than targertsum move left by increasing 1
+# if sum greater than target sum move right by decreasing 1
+
+# def threeNumberSum(array, targetSum):
+#    array.sort()
+#    newArray = []
+#    for i in range(len(array)- 2):
+#       l = i + 1
+#       r = len(array) - 1
+       
+#       while l < r:
+#          current = array[i] + array[l] + array[r]
+#          if current == targetSum:
+#             newArray.append([array[i], array[l], array[r]])
+#             l += 1
+#             r -= 1
+#          elif current < targetSum:
+#             l += 1
+#          elif current > targetSum:
+#             r -= 1
+#    return newArray
+# print(threeNumberSum([12,3,1,2,-6,5,-8,6],0))
