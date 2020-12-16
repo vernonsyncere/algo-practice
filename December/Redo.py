@@ -73,19 +73,46 @@
 #    return newArray
 # print(threeNumberSum([12,3,1,2,-6,5,-8,6],0))
 
-def moveElmenttoEnd(array, toMove):
-   lIdx = 0
-   rIdx = len(array) - 1
-   while lIdx < rIdx :
-      if array[rIdx] == toMove:
-         rIdx -= 1
-      if array[lIdx] != toMove:
-         lIdx += 1
-      if array[lIdx] == toMove and array[rIdx] != toMove:
-         temp = array[rIdx]
-         array[rIdx] = array[lIdx]
-         array[lIdx] = temp
-         lIdx += 1
-         rIdx -= 1
-   return array
-print(moveElmenttoEnd([2,1,2,4,2,2,3,4,2],4))
+# def moveElmenttoEnd(array, toMove):
+#    lIdx = 0
+#    rIdx = len(array) - 1
+#    while lIdx < rIdx :
+#       if array[rIdx] == toMove:
+#          rIdx -= 1
+#       if array[lIdx] != toMove:
+#          lIdx += 1
+#       if array[lIdx] == toMove and array[rIdx] != toMove:
+#          temp = array[rIdx]
+#          array[rIdx] = array[lIdx]
+#          array[lIdx] = temp
+#          lIdx += 1
+#          rIdx -= 1
+#    return array
+# print(moveElmenttoEnd([2,1,2,4,2,2,3,4,2],4))
+
+def smallestAbsoluteValue(arrayOne, arrayTwo):
+   arrayOne.sort()
+   arrayTwo.sort()
+   oneIdx = 0
+   twoIdx = 0
+   current = float("inf")
+   smallest = float("inf")
+   last = []
+   while oneIdx < len(arrayOne) and twoIdx < len(arrayTwo):
+      numOne = arrayOne[oneIdx]
+      numTwo = arrayTwo[twoIdx]
+      if numOne < numTwo:
+         current = numTwo - numOne
+         oneIdx += 1
+      elif numTwo < numOne:
+         current = numOne - numTwo
+         twoIdx += 1
+      else:
+         return [numOne, numTwo]
+      if smallest > current:
+         smallest = current
+         last = [numOne, numTwo]
+   
+   return last
+
+print(smallestAbsoluteValue([-1,5,10,3,28,20], [135,134,26,15,17]))
