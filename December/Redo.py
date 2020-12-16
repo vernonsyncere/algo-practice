@@ -72,3 +72,20 @@
 #             r -= 1
 #    return newArray
 # print(threeNumberSum([12,3,1,2,-6,5,-8,6],0))
+
+def moveElmenttoEnd(array, toMove):
+   lIdx = 0
+   rIdx = len(array) - 1
+   while lIdx < rIdx :
+      if array[rIdx] == toMove:
+         rIdx -= 1
+      if array[lIdx] != toMove:
+         lIdx += 1
+      if array[lIdx] == toMove and array[rIdx] != toMove:
+         temp = array[rIdx]
+         array[rIdx] = array[lIdx]
+         array[lIdx] = temp
+         lIdx += 1
+         rIdx -= 1
+   return array
+print(moveElmenttoEnd([2,1,2,4,2,2,3,4,2],4))
