@@ -90,29 +90,46 @@
 #    return array
 # print(moveElmenttoEnd([2,1,2,4,2,2,3,4,2],4))
 
-def smallestAbsoluteValue(arrayOne, arrayTwo):
-   arrayOne.sort()
-   arrayTwo.sort()
-   oneIdx = 0
-   twoIdx = 0
-   current = float("inf")
-   smallest = float("inf")
-   last = []
-   while oneIdx < len(arrayOne) and twoIdx < len(arrayTwo):
-      numOne = arrayOne[oneIdx]
-      numTwo = arrayTwo[twoIdx]
-      if numOne < numTwo:
-         current = numTwo - numOne
-         oneIdx += 1
-      elif numTwo < numOne:
-         current = numOne - numTwo
-         twoIdx += 1
-      else:
-         return [numOne, numTwo]
-      if smallest > current:
-         smallest = current
-         last = [numOne, numTwo]
+# def smallestAbsoluteValue(arrayOne, arrayTwo):
+#    arrayOne.sort()
+#    arrayTwo.sort()
+#    oneIdx = 0
+#    twoIdx = 0
+#    current = float("inf")
+#    smallest = float("inf")
+#    last = []
+#    while oneIdx < len(arrayOne) and twoIdx < len(arrayTwo):
+#       numOne = arrayOne[oneIdx]
+#       numTwo = arrayTwo[twoIdx]
+#       if numOne < numTwo:
+#          current = numTwo - numOne
+#          oneIdx += 1
+#       elif numTwo < numOne:
+#          current = numOne - numTwo
+#          twoIdx += 1
+#       else:
+#          return [numOne, numTwo]
+#       if smallest > current:
+#          smallest = current
+#          last = [numOne, numTwo]
    
-   return last
+#    return last
 
-print(smallestAbsoluteValue([-1,5,10,3,28,20], [135,134,26,15,17]))
+# print(smallestAbsoluteValue([-1,5,10,3,28,20], [135,134,26,15,17]))
+
+
+# assume that its going decreasing and increasing
+# for loop that ends len(arr) -2
+# check if its bigger or smaller 
+
+def monotonic(array):
+   itsBigger = True
+   itsSmaller = True
+   for i in range(len(array) - 2):
+      if array[i] < array[i + 1]:
+         itsBigger = False
+      if array[i] > array[ i + 1]:
+         itsSmaller = False
+   return itsBigger or itsSmaller
+
+print(monotonic([1,2,3,10,5,6,7,8,9]))
