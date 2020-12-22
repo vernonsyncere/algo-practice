@@ -219,23 +219,44 @@ import math
 
 # print(spiralTraverse([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
 
+# def longestPeak(array):
+#    longPeak = 0
+#    i = 1
+#    while i < len(array) - 1:
+#       currentPeak = array[i-1] < array[i] and array[i] > array[i+1]
+#       if not currentPeak:
+#          i += 1
+#          continue
+#       lIdx = i - 2
+#       while lIdx <= 0 and array[lIdx] < array[lIdx + 1]:
+#          lIdx -= 1
+#       rIdx = i + 2
+#       while rIdx < len(array) and array[rIdx] > array[lIdx - 1]:
+#          rIdx += 1
+
+#       newPeak = rIdx - lIdx - 1
+#       longPeak = max(longPeak,newPeak)
+#       i = rIdx
+#    return longPeak
+# print(longestPeak([1,2,3,3,4,0,10,6,5,-1,-3,2,3]))
+
 def longestPeak(array):
-   longPeak = 0
+   longestPeak = 0
    i = 1
    while i < len(array) - 1:
-      currentPeak = array[i-1] < array[i] and array[i] > array[i+1]
-      if not currentPeak:
+      isPeak = array[i -1] < array[i] and array[i] > array[i + 1] 
+      if not isPeak:
          i += 1
          continue
-      lIdx = i - 2
-      while lIdx <= 0 and array[lIdx] < array[lIdx + 1]:
-         lIdx -= 1
-      rIdx = i + 2
-      while rIdx < len(array) and array[rIdx] > array[lIdx - 1]:
-         rIdx += 1
-
-      newPeak = rIdx - lIdx - 1
-      longPeak = max(longPeak,newPeak)
-      i = rIdx
-   return longPeak
+      leftIndex = i - 2
+      while leftIndex >= 0 and array[leftIndex] < array[leftIndex + 1]:
+         leftIndex -= 1
+      rightIndex = i + 2
+      while rightIndex < len(array) and array[rightIndex] < array[rightIndex - 1]:
+         rightIndex += 1
+      
+      currentPeak = rightIndex - leftIndex - 1
+      longestPeak = max(longestPeak, currentPeak)
+      i = rightIndex
+   return longestPeak
 print(longestPeak([1,2,3,3,4,0,10,6,5,-1,-3,2,3]))
