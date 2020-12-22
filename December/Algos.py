@@ -240,23 +240,60 @@ import math
 #    return longPeak
 # print(longestPeak([1,2,3,3,4,0,10,6,5,-1,-3,2,3]))
 
-def longestPeak(array):
-   longestPeak = 0
+# def longestPeak(array):
+#    longestPeak = 0
+#    i = 1
+#    while i < len(array) - 1:
+#       isPeak = array[i -1] < array[i] and array[i] > array[i + 1] 
+#       if not isPeak:
+#          i += 1
+#          continue
+#       leftIndex = i - 2
+#       while leftIndex >= 0 and array[leftIndex] < array[leftIndex + 1]:
+#          leftIndex -= 1
+#       rightIndex = i + 2
+#       while rightIndex < len(array) and array[rightIndex] < array[rightIndex - 1]:
+#          rightIndex += 1
+      
+#       currentPeak = rightIndex - leftIndex - 1
+#       longestPeak = max(longestPeak, currentPeak)
+#       i = rightIndex
+#    return longestPeak
+# print(longestPeak([1,2,3,3,4,0,10,6,5,-1,-3,2,3]))
+
+
+# way to check for a peak is to see if element directly to left and right are smaller than
+# current element
+
+# lIdx = currIdx -2
+# while lIdx >=0 and array[liIdx] < array[lIdx + 1]:
+#    lIdx -= 1
+# rIdx = currIdx + 2 
+# while rIdx < len(arr) and array[rIdx] < arr[Idx -1]:
+#    rIdx += 1
+# currentPeak = rIdx - lIdx - 1
+# peakLength = max(peakLength,currentPeak)
+# i = rIdx
+
+def peakLong(array):
+   maxPeak = 0
    i = 1
-   while i < len(array) - 1:
-      isPeak = array[i -1] < array[i] and array[i] > array[i + 1] 
+   while i < len(array) -1:
+      isPeak = array[i - 1] < array[i] and array[i] > array[i + 1]
       if not isPeak:
          i += 1
          continue
-      leftIndex = i - 2
-      while leftIndex >= 0 and array[leftIndex] < array[leftIndex + 1]:
-         leftIndex -= 1
-      rightIndex = i + 2
-      while rightIndex < len(array) and array[rightIndex] < array[rightIndex - 1]:
-         rightIndex += 1
-      
-      currentPeak = rightIndex - leftIndex - 1
-      longestPeak = max(longestPeak, currentPeak)
-      i = rightIndex
-   return longestPeak
-print(longestPeak([1,2,3,3,4,0,10,6,5,-1,-3,2,3]))
+      leftIdx = i - 2
+      while leftIdx >= 0 and array[leftIdx] < array[leftIdx + 1]:
+         leftIdx -= 1
+      rightIdx = i + 2
+      while rightIdx < len(array) and array[rightIdx] < array[rightIdx - 1]:
+         rightIdx += 1
+      currentPeak = rightIdx - leftIdx - 1
+      maxPeak = max(maxPeak, currentPeak)
+      i = rightIdx
+   return maxPeak
+print(peakLong([1,2,3,3,4,0,10,6,5,-1,-3,2,3]))
+   
+
+
